@@ -1,0 +1,32 @@
+import requests
+import telepot
+from datetime import datetime, timedelta
+from dateutil import parser
+
+def check_del_dates(data,flags_deadline):
+    present = datetime.now()#today's date
+
+
+    #checking all deadlines with today's date 
+    for i,elem in enumerate(data[1:]):
+        flag = flags_deadline[elem[1]]
+        dt = parser.parse(elem[3])
+        if (dt<present)&(flag==False):    
+            flags_deadline[elem[1]] = True 
+            message_deadline = forming_the_message(elem)
+
+            send_telegram(message_deadline)
+
+def forming_the_message(elem):
+    return "Order by number "+str(elem[1])+" has forgotten to pay. Please, call 911 "
+
+def send_telegram(message):
+
+    #At first create your bot using @BotFather
+    token = "5456924042:AAH9TP7lZPol_WqXBOpliZGueoP_1mMqiXk" #relate to my @jeeveatbot token
+
+    receiver_id = 450265847  #to know your id use @jsondumpbot
+
+    bot = telepot.Bot(token)
+
+    bot.sendMessage(receiver_id,message) #sending the message
