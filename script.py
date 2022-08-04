@@ -79,9 +79,9 @@ try:
                 
 
 except Exception as _ex:
-    print("[INFO] Error while working with PostgreSQL", _ex)
+    print("[INFO] Error while working", _ex)
 
 finally:
     if conn:
         conn.close()
-        print("[INFO] PostgreSQL connection closed")
+        print("[INFO] Connection closed")
