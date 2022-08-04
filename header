@@ -1,0 +1,7 @@
+host = "127.0.0.1"
+user = "pstgres"
+password ="qwerty"
+db_name = "MiddlePython"
+table_name = "my_middle_python"
+update_time = 5 #seconds
+data_header = [('№',' заказ №', 'стоиомость $','срок поставки', 'стоиомость rub')]
